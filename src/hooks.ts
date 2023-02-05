@@ -35,12 +35,38 @@ export const useDimension = () => {
         }
         return () => {
             window.onresize = () => {
-                
+
             }
         }
     }, [])
     return {
         w, 
         h
+    }
+}
+
+export const useStyle = (i : number, scale : number) => {
+    const {w, h} = useDimension()
+    const barW : number = Math.min(w, h) / 6
+    const barH : number = Math.min(w, h) / 15 
+    const position  = 'absolute'
+    const background : string = `#64dd17`
+    return {
+        barStyle() {
+            const top = `${(h /2 - barW) * scale}px`
+            const left = `${i * barW}px`
+            const transform = `rotate(${90 * scale}deg)`
+            const width = `${barW}px`
+            const height = `${barH}px`
+            return {
+                position, 
+                top, 
+                left,
+                background, 
+                transform, 
+                width, 
+                height 
+            }
+        }
     }
 }
