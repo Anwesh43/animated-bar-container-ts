@@ -11,7 +11,9 @@ interface AnimatedBarProps {
 const AnimatedBar : React.FC<AnimatedBarProps> = (props : AnimatedBarProps) => {
     const {barStyle} = useStyle(props.i, props.scale)
     return (
-        <div style = {barStyle()}>
+        <div style = {barStyle()} onClick = {() => {
+            props.onClick()
+        }}>
         </div>
     )
 }

@@ -4,7 +4,7 @@ import {
     useState
 } from 'react'
 
-export const useAnimatedScale = (scGap : number = 0.01, delay : number = 20) => {
+export const useAnimatedScale = (scGap : number = 0.01, delay : number = 15) => {
     const [scale, setScale] = useState(0)
     const [animated, setAnimated] = useState(false)
     const [dir, setDir] = useState(1)
@@ -16,6 +16,9 @@ export const useAnimatedScale = (scGap : number = 0.01, delay : number = 20) => 
                 const interval = setInterval(() => {
                     setScale((prev : number) : number => {
                         if (prev < 0 || prev > 1) {
+                            clearInterval(interval)
+                            setAnimated(false)
+                            setDir(dir * -1)
                             return scale + dir 
                         }
                         return prev + scGap * dir 
@@ -54,7 +57,7 @@ export const useStyle = (i : number, scale : number) => {
     const background : string = `#64dd17`
     return {
         barStyle() : CSSProperties {
-            const top = `${(h /2 - barW) * scale}px`
+            const top = `${(h / 2) * scale}px`
             const left = `${i * barW}px`
             const transform = `rotate(${90 * scale}deg)`
             const width = `${barW}px`
