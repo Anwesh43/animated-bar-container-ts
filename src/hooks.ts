@@ -1,4 +1,5 @@
 import {
+    CSSProperties,
     useEffect, 
     useState
 } from 'react'
@@ -52,7 +53,7 @@ export const useStyle = (i : number, scale : number) => {
     const position  = 'absolute'
     const background : string = `#64dd17`
     return {
-        barStyle() {
+        barStyle() : CSSProperties {
             const top = `${(h /2 - barW) * scale}px`
             const left = `${i * barW}px`
             const transform = `rotate(${90 * scale}deg)`
