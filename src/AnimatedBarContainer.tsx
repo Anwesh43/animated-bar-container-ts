@@ -12,7 +12,7 @@ const getAnimatedBars = (n : number) : Array<React.ReactElement> => {
     }
     return animatedBars 
 }
-const AnimatedBarContainer = (props : ABCProps) => {
+const AnimatedBarContainer : React.FC<ABCProps> = (props : ABCProps) => {
     return (
         <React.Fragment>
             {getAnimatedBars(props.n)}

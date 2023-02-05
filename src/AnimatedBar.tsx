@@ -8,7 +8,7 @@ interface AnimatedBarProps {
     i : number 
 }
 
-const AnimatedBar = (props : AnimatedBarProps) => {
+const AnimatedBar : React.FC<AnimatedBarProps> = (props : AnimatedBarProps) => {
     const {barStyle} = useStyle(props.i, props.scale)
     return (
         <div style = {barStyle()}>
